@@ -24,10 +24,11 @@ public:
     // Add other members only if necessary
 
     // top function
-    //template <typename T> //<-- dont need inside class def
-    const T &Stack<T>::top() const
+    // template <typename T> //<-- dont need inside class def
+    // const T &Stack<T>::top() const
+    const T &top() const
     {
-        if (this->empty()) //uses this so needs to be inside class def
+        if (this->empty()) // uses this so needs to be inside class def
         {
             throw std::underflow_error("Stack underflow");
         }
@@ -36,10 +37,9 @@ public:
 };
 
 #include "stack.h"
-//lowkey not sure if i was supposed ot put this in a seperate file 
-//or put it in the bottom of the ehader file the instructions were vague asf
-//but thats how i did it so we shall see if it passes tests like this
-
+// lowkey not sure if i was supposed ot put this in a seperate file
+// or put it in the bottom of the ehader file the instructions were vague asf
+// but thats how i did it so we shall see if it passes tests like this
 
 // contuctor
 template <typename T>
