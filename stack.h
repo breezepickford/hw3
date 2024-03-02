@@ -22,6 +22,17 @@ public:
     //^ return type is const reference (Const T &)  so that caller of method cannot modify the ele returned by top
     // const at the end makes it so it doesnt modify mem vars of this class
     // Add other members only if necessary
+
+    // top function
+    //template <typename T> //<-- dont need inside class def
+    const T &Stack<T>::top() const
+    {
+        if (this->empty()) //uses this so needs to be inside class def
+        {
+            throw std::underflow_error("Stack underflow");
+        }
+        return std::vector<T>::back();
+    }
 };
 
 #include "stack.h"
@@ -54,7 +65,7 @@ size_t Stack<T>::size() const
 
 // pop function
 template <typename T>
-void Stack<t>::pop()
+void Stack<T>::pop()
 {
     if (this->empty())
     {
@@ -68,17 +79,6 @@ template <typename T>
 void Stack<T>::push(const T &item)
 { // const bc dont wanna change item when adding it
     std::vector<T>::push_back(item);
-}
-
-// top function
-template <typename T>
-const T &Stack<T>::top() const
-{
-    if (this->empty())
-    {
-        throw std::underflow_error("Stack underflow");
-    }
-    return std::vector<T>::back();
 }
 
 #endif
