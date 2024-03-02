@@ -5,12 +5,19 @@
 struct Event
 {
     uint64_t time;
-    Wire* wire;
+    Wire *wire;
     char state;
 };
 
-typedef struct EventLess {
-        //write the operator() required to make this a functor that compares Events by time
+typedef struct EventLess
+{
+    // write the operator() required to make this a functor that compares Events by time
+    // op overload
+    bool operator()(const Event *lhs, const Event *rhs) const
+    {
+        // true if left earlier than right
+        return lhs->time < rhs->time;
+    }
 } EventLess;
-	
+
 #endif
