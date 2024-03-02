@@ -34,27 +34,3 @@ void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot)
         larger = head;
     }
 }
-
-Node *llfilter(Node *head, Comp pred) // this function removes elements form the list that match certain criteria (predicate)
-{
-    // base case: if list empty or end of list
-    if (head == NULL)
-    {
-        return NULL;
-    }
-    // if head satifies predicate 'pred(head->val) == true'
-    // remove it
-    // if not go to next node, put back in list
-
-    if (pred(head->val))
-    {
-        Node *NextNode = head->next;     // new node holds next node after head
-        delete head;                     // delete head from list
-        return llfilter(NextNode, pred); // go to next node
-    }
-    else
-    {
-        head->next = llfilter(head->next, pred); // go down into next node
-        return head;                             // return current head back to list bc doesnt match
-    }
-}
