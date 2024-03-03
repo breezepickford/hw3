@@ -33,4 +33,6 @@ void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot)
         head->next = larger; // smae thing for larger
         larger = head;
     }
+    //set og head to null
+    head = NULL;
 }
